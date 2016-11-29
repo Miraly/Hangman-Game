@@ -1,0 +1,38 @@
+.wrapper {
+	background-image: url(../images/bg.png);
+	text-align: center;
+	margin: 30px auto 0px auto;
+}
+
+h1 {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 50px;
+	color: #303A72;
+}
+
+.country-img {
+	margin: 30px auto 0px auto;
+	background-color: rgba(0,0,0,0.76);
+	width: 902px;
+	min-height: 470px;
+	
+}
+
+img {
+	border: solid 1px #262937;
+}
+
+p {
+	margin: 20px;
+	color: #82d500;
+	font-family: Gotham, Helvetica Neue, Helvetica, Arial, "sans-serif";
+	font-size: 24px;
+}
+
+.letter  {
+	display: inline-block;
+	color: red;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
