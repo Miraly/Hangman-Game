@@ -15,6 +15,8 @@ var letterArray;
 var winCounter = 0;
 var guessCounter;
 var correctGuessCounter;
+var guessedLetters; //introducing var in global to be seen 
+var guessedLettersArray = [];
 
 function reset() {
 	//initial vars
@@ -53,21 +55,34 @@ function isLetter(str) {
   return str.length === 1 && str.match(/[a-z]/i);
 }
 
+var inArray = function(str) {
+	for (var i = 0; i < guessedLettersArray.length; i++) {
+		if (str === guessedLettersArray[i]) {
+			return true;
+		}
+	}
+	guessedLettersArray.push(str);
+	return false;
+}
+
 
 var onload = function(){
-    	reset();	
+	guessedLetters = document.getElementById("guessedLetters");//using this global var  
+    reset();	
+	
 };
 //getting letter from charachter code 
 document.onkeypress = function (e){
     var charCode = e.which || e.keyCode;
 	var guess = String.fromCharCode (charCode);
 	
-	if (isLetter(guess)) {
+	if (isLetter(guess) && !inArray(guess)) {
 		var guessDiv = document.createElement("div");
 		guessDiv.innerHTML = guess ;
 		guessDiv.setAttribute("class", "letter");
-		var guessedLetters = document.getElementById("guessedLetters");
 		guessedLetters.appendChild(guessDiv);
+	
+
 		
 		var correctGuess = false; //assuming that guess is incorrect for guess counter to work
 		for (var i = 0; i < word.length; i++ ) {
