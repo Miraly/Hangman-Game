@@ -40,6 +40,8 @@ function reset() {
     	myNode.removeChild(myNode.firstChild);
 	}
 	
+	guessedLettersArray.splice(0, guessedLettersArray.length);
+	
 	
 	for (var i = 0; i < word.length; i++ ) {
 		var newLetterDiv = document.createElement("div");
@@ -49,6 +51,8 @@ function reset() {
 		letters.appendChild(newLetterDiv);
 		letterArray.push(newLetterDiv);
 	}
+	
+	
 }
 
 function isLetter(str) {
