@@ -17,12 +17,14 @@ var guessCounter;
 var correctGuessCounter;
 var guessedLetters; //introducing var in global to be seen 
 var guessedLettersArray = [];
+var imgGuessed;
+var imgGuessedDiv;
 
 function reset() {
 	//initial vars
 	word = countries[Math.floor(Math.random()*countries.length)];
 	letterArray = [];
-	guessCounter = 15;
+	guessCounter = 7;
 	correctGuessCounter = 0;
 	
 	var guessCounterDiv = document.getElementById("guessCounter");
@@ -52,6 +54,8 @@ function reset() {
 		letterArray.push(newLetterDiv);
 	}
 	
+	imgGuessed = "assets/images/" + word + ".jpg"; //setting up image as a "hint"
+	imgGuessedDiv.setAttribute("src", imgGuessed);
 	
 }
 
@@ -71,17 +75,15 @@ var inArray = function(str) {
 
 
 var onload = function(){
-	
+	imgGuessedDiv = document.getElementById("countryGuessed");
 	guessedLetters = document.getElementById("guessedLetters");//using this global var  
     reset();
-
-	
 };
 //getting letter from charachter code 
 document.onkeypress = function (e){
     var charCode = e.which || e.keyCode;
-	var guess = String.fromCharCode (charCode);
-	
+    var guess = String.fromCharCode (charCode);
+
 	if (isLetter(guess) && !inArray(guess)) {
 		var guessDiv = document.createElement("div");
 		guessDiv.innerHTML = guess ;
@@ -110,12 +112,8 @@ document.onkeypress = function (e){
 			var winCounterDiv = document.getElementById("winCounter");
 			winCounterDiv.innerHTML = "Wins: " + winCounter;
 			
-			var imgGuessed = "assets/images/" + word.toLowerCase() + ".jpg";
-			var imgGuessedDiv = document.getElementById("countryGuessed");
-			imgGuessedDiv.setAttribute("src", imgGuessed);
-
-			console.log(imgGuessed);
 			
+				
 			setTimeout(reset, 3000);
 		}
 		
