@@ -71,8 +71,10 @@ var inArray = function(str) {
 
 
 var onload = function(){
+	
 	guessedLetters = document.getElementById("guessedLetters");//using this global var  
-    reset();	
+    reset();
+
 	
 };
 //getting letter from charachter code 
@@ -107,6 +109,13 @@ document.onkeypress = function (e){
 			winCounter ++;
 			var winCounterDiv = document.getElementById("winCounter");
 			winCounterDiv.innerHTML = "Wins: " + winCounter;
+			
+			var imgGuessed = "assets/images/" + word.toLowerCase() + ".jpg";
+			var imgGuessedDiv = document.getElementById("countryGuessed");
+			imgGuessedDiv.setAttribute("src", imgGuessed);
+
+			console.log(imgGuessed);
+			
 			setTimeout(reset, 3000);
 		}
 		
